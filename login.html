@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In &mdash; Vidya Bharati Public School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="login.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-page">
+
+    <!-- Left brand panel -->
+    <div class="auth-side">
+      <a href="index.html" class="auth-brand">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+          <path d="M24 4L44 15L24 26L4 15L24 4Z" fill="#C8963E"/>
+          <path d="M12 20V32C12 32 17 37 24 37C31 37 36 32 36 32V20L24 26.5L12 20Z" fill="#F8F4EC"/>
+        </svg>
+        <span>Vidya Bharati</span>
+      </a>
+
+      <div class="auth-side-content">
+        <div class="eyebrow" style="color:var(--gold-light)">SCHOOL PORTAL</div>
+        <h1>One account, everything your role needs.</h1>
+        <p>Attendance, timetables, results, homework, and notices &mdash; all in one secure place for students, teachers, and administrators.</p>
+
+        <div class="auth-side-points">
+          <div class="about-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            <div><strong>Role-based access</strong><span>You'll only see what's relevant to you.</span></div>
+          </div>
+          <div class="about-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            <div><strong>Your data stays private</strong><span>Credentials and records are securely protected.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html" class="auth-back">&larr; Back to homepage</a>
+    </div>
+
+    <!-- Right form panel -->
+    <div class="auth-main">
+      <div class="auth-card">
+
+        <!-- LOGIN FORM -->
+        <form class="auth-form active" id="loginForm" action="backend/login_process.php" method="POST">
+          <h2>Welcome back</h2>
+          <p class="auth-sub">Sign in to access your dashboard.</p>
+
+          <div class="role-select" role="group" aria-label="Select your role">
+            <input type="radio" name="role" value="student" id="loginRoleStudent" checked>
+            <label for="loginRoleStudent">Student</label>
+            <input type="radio" name="role" value="teacher" id="loginRoleTeacher">
+            <label for="loginRoleTeacher">Teacher</label>
+            <input type="radio" name="role" value="admin" id="loginRoleAdmin">
+            <label for="loginRoleAdmin">Admin</label>
+          </div>
+
+          <div class="field">
+            <label for="loginId">Email or User ID</label>
+           <input type="text" id="loginId" name="email" placeholder="e.g. student@vidyabharati.edu.in" required>
+          </div>
+
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+              <button type="button" class="pw-toggle" data-target="loginPassword" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label class="checkbox">
+              <input type="checkbox" id="remember">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="link-muted">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary auth-submit">Sign In</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+<script src="login.js"></script>
+</body>
+</html>
