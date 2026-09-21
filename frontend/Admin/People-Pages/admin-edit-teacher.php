@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'backend/config.php';
+require '../../../backend/config.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header('Location: login.html?error=unauthorized');
+    header('Location: ../../login.html?error=unauthorized');
     exit;
 }
 
@@ -51,7 +51,7 @@ if (!$teacher) {
 </head>
 <body>
 
-  <a href="admin-teachers.php">&larr; Back to Manage Teachers</a>
+  <a href="../People-Pages/admin-teachers.php">&larr; Back to Manage Teachers</a>
   <h1>Edit Teacher</h1>
 
   <form method="POST">

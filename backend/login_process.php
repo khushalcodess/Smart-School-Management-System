@@ -16,14 +16,14 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['role'] = $user['role'];
 
     if ($user['role'] === 'student') {
-        header('Location: ../student-dashboard.php');
+        header('Location: ../frontend/Student/student-dashboard.html');
     } elseif ($user['role'] === 'teacher') {
-        header('Location: ../teacher-dashboard.php');
+        header('Location: ../frontend/Teacher/teacher-dashboard.html');
     } elseif ($user['role'] === 'admin') {
-        header('Location: ../admin-dashboard.php');
+        header('Location: ../frontend/Admin/Overview-Pages/admin-dashboard.php');
     }
     exit;
 } else {
-    header('Location: ../login.html?error=1');
+    header('Location: ../frontend/login.html?error=1');
     exit;
 }

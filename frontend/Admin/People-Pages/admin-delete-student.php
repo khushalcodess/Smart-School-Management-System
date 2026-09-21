@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'backend/config.php';
+require '../../../backend/config.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header('Location: login.html?error=unauthorized');
+    header('Location: ../../login.html?error=unauthorized');
     exit;
 }
 
