@@ -184,8 +184,13 @@ foreach ($timetable as $row) {
               <?php echo htmlspecialchars($c); ?>
             </a>
           <?php endforeach; ?>
-        </div>
 
+          <a href="admin-delete-timetable.php?class=<?php echo urlencode($selectedClass); ?>"
+             class="action-btn delete" style="margin-left:auto; align-self:center;"
+             onclick="return confirm('Delete the ENTIRE timetable of class <?php echo htmlspecialchars($selectedClass, ENT_QUOTES); ?>? This cannot be undone.');">
+            Delete whole timetable of <?php echo htmlspecialchars($selectedClass); ?>
+          </a>
+        </div>
         <div style="overflow-x:auto;">
           <table class="tt-grid">
             <tr>

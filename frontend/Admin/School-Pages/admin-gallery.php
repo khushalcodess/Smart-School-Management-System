@@ -10,17 +10,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $caption = trim($_POST['caption']);
 
-    if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-        $originalName = $_FILES['image']['name'];
-        $tmpPath = $_FILES['image']['tmp_name'];
+  if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+    $originalName = $_FILES['image']['name'];
+    $tmpPath = $_FILES['image']['tmp_name'];
 
-        $newFileName = time() . '_' . $originalName;
+    // Replace spaces and unsafe characters in the filename
+    $safeName = preg_replace('/[^A-Za-z0-9._-]/', '_', $originalName);
+    $newFileName = time() . '_' . $safeName;
+    $destination = '../../../uploads/' . $newFileName;
 
-        // Save the actual file to the project-root uploads/ folder
-        $destination = '../../../uploads/' . $newFileName;
-        move_uploaded_file($tmpPath, $destination);
-
-        // Store the CLEAN path (no ../) in the database
+    if (move_uploaded_file($tmpPath, $destination)) {
         $cleanPath = 'uploads/' . $newFileName;
 
         $stmt = $pdo->prepare(
@@ -31,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'caption' => $caption,
             'uploaded_by' => $_SESSION['user_id']
         ]);
+    } else {
+        header('Location: admin-gallery.php?error=upload_failed');
+        exit;
     }
+}
 
     header('Location: admin-gallery.php');
     exit;

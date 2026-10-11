@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Kolkata');
 $DB_HOST = 'localhost';
 $DB_NAME = 'smart_school';
 $DB_USER = 'root';

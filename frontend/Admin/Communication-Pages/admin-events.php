@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description']);
     $eventDate = $_POST['event_date'];
 
+    // Server-side safety check: reject any date before today
+    if ($eventDate < date('Y-m-d')) {
+        header('Location: admin-events.php?error=pastdate');
+        exit;
+    }
+
     $stmt = $pdo->prepare(
         "INSERT INTO events (title, description, event_date, posted_by) VALUES (:title, :description, :event_date, :posted_by)"
     );
@@ -95,8 +101,8 @@ $events = $pdo->query(
               <textarea name="description"></textarea>
             </div>
             <div class="field">
-              <label>Event Date</label>
-              <input type="date" name="event_date" required>
+            <label>Event Date</label>
+            <input type="date" name="event_date" min="<?php echo date('Y-m-d'); ?>" required>
             </div>
             <button type="submit">Add Event</button>
           </form>

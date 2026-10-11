@@ -18,7 +18,7 @@ if ($user && password_verify($password, $user['password'])) {
     if ($user['role'] === 'student') {
         header('Location: ../frontend/Student/student-dashboard.html');
     } elseif ($user['role'] === 'teacher') {
-        header('Location: ../frontend/Teacher/teacher-dashboard.html');
+      header('Location: ../frontend/Teacher/Overview-Pages/teacher-dashboard.php');
     } elseif ($user['role'] === 'admin') {
         header('Location: ../frontend/Admin/Overview-Pages/admin-dashboard.php');
     }
